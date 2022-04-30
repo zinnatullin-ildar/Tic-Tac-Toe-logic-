@@ -1,14 +1,13 @@
 let players = ['x', 'o'];
 let activePlayer = 0;
-let board = null;
 
 function startGame() {
-   board = [
+  board = [
   ['', '', ''],
   ['', '', ''],
   ['', '', '']
 ];
-  activePlayer = 0;
+  activePlayer;
   renderBoard(board);
 }
 
@@ -18,8 +17,8 @@ function click(row, column) {
   renderBoard(board);
   let busyColumn = 0;
   let busyRow = 0;
-  let diagonal1 = 0;
-  let diagonal2 = 0;
+  let busyDiagonal1 = 0;
+  let busyDiagonal2 = 0;
 
   for (let i = 0; i < board.length; i++) {
     if (board[row][i] === currentPlayer) {
@@ -41,8 +40,8 @@ function click(row, column) {
 
   for (let i = 0; i < board.length; i++) {
     if (board[i][board.length - 1 - i] === currentPlayer) {
-      diagonal1++;
-      if (diagonal1 === board.length) {
+      busyDiagonal1++;
+      if (busyDiagonal1 === board.length) {
         showWinner(players.indexOf(currentPlayer));
       }
     }
@@ -50,8 +49,8 @@ function click(row, column) {
 
   for (let i = 0; i < board.length; i++) {
     if (board[i][i] === currentPlayer) {
-      diagonal2++;
-      if (diagonal2 === board.length) {
+      busyDiagonal2++;
+      if (busyDiagonal2 === board.length) {
         showWinner(players.indexOf(currentPlayer));
       }
     }
